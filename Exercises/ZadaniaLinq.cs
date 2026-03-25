@@ -70,18 +70,16 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Zadanie03_StudenciPosortowani()
     {
-        var query = from s in DaneUczelni.Studenci
-            select $"{s.Nazwisko}";
-        
+
         var method = DaneUczelni.Studenci
-            .Select(s => $"{s.Nazwisko}");
-        var method2 = DaneUczelni.Studenci
-            .Select(s => $"{s.Imie}");
+            .OrderBy(s => $"{s.Nazwisko}")
+            .ThenBy(s => $"{s.Imie}")
+            .Select(s => $"{s.NumerIndeksu}, {s.Imie}, {s.Nazwisko}");
         
+            
+       return method;
         
-        
-        
-        
+       
         throw Niezaimplementowano(nameof(Zadanie03_StudenciPosortowani));
     }
 
@@ -97,6 +95,11 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Zadanie04_PierwszyPrzedmiotAnalityczny()
     {
+        return DaneUczelni.Przedmioty
+            .Select(p => $"{p.Kategoria}");
+            //.FirstOrDefault(p => p.Equals(""));
+            
+        
         throw Niezaimplementowano(nameof(Zadanie04_PierwszyPrzedmiotAnalityczny));
     }
 
