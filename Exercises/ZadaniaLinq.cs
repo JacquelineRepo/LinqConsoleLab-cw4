@@ -27,14 +27,17 @@ public sealed class ZadaniaLinq
         var query2 = from s in DaneUczelni.Studenci
             where s.Miasto.Equals("Warsaw")
             select new { s.NumerIndeksu, s.Imie, s.Nazwisko, s.Miasto };
+        //gives everything but not as a singular string
         
         //Method syntax
         var method = DaneUczelni.Studenci
             .Where(s => s.Miasto.Equals("Warsaw"))
             .Select(s => $"{s.NumerIndeksu}, {s.Imie}, {s.Nazwisko}, {s.Miasto}");
+
+        return method;
         
         
-        throw Niezaimplementowano(nameof(Zadanie01_StudenciZWarszawy));
+        //throw Niezaimplementowano(nameof(Zadanie01_StudenciZWarszawy));
     }
 
     /// <summary>
@@ -48,6 +51,10 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Zadanie02_AdresyEmailStudentow()
     {
+
+        return DaneUczelni.Studenci
+            .Select(s => $"{s.Email}");
+        
         throw Niezaimplementowano(nameof(Zadanie02_AdresyEmailStudentow));
     }
 
@@ -63,6 +70,18 @@ public sealed class ZadaniaLinq
     /// </summary>
     public IEnumerable<string> Zadanie03_StudenciPosortowani()
     {
+        var query = from s in DaneUczelni.Studenci
+            select $"{s.Nazwisko}";
+        
+        var method = DaneUczelni.Studenci
+            .Select(s => $"{s.Nazwisko}");
+        var method2 = DaneUczelni.Studenci
+            .Select(s => $"{s.Imie}");
+        
+        
+        
+        
+        
         throw Niezaimplementowano(nameof(Zadanie03_StudenciPosortowani));
     }
 
