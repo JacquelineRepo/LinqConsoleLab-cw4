@@ -96,8 +96,10 @@ public sealed class ZadaniaLinq
     public IEnumerable<string> Zadanie04_PierwszyPrzedmiotAnalityczny()
     {
         return DaneUczelni.Przedmioty
-            .Select(p => $"{p.Kategoria}");
-            //.FirstOrDefault(p => p.Equals(""));
+            .Select(p => $"{p.Nazwa}, {p.Kategoria}")
+            .Where(s => )
+            .FirstOrDefault();
+            
             
         
         throw Niezaimplementowano(nameof(Zadanie04_PierwszyPrzedmiotAnalityczny));
